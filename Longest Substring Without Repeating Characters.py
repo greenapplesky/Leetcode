@@ -8,21 +8,17 @@ class Solution:
         res = cur = 0
         dict = {}
         while(ptr2 < len(s)):
-            if(s[ptr2] < 'a' or s[ptr2] > 'z'):
-                ptr2 += 1
-                continue
-            index = ord(s[ptr2])-97
-            if(dict[index] is None or dict[index] < ptr1):
+            if(s[ptr2] not in dict or dict[s[ptr2]] < ptr1):
                 cur += 1
                 res = max(cur, res)
             else:
-                cur -= dict[index]
-                ptr1 = dict[index]+1
-            dict[index] = ptr2
+                cur = ptr2 - dict[s[ptr2]]
+                ptr1 = dict[s[ptr2]]+1
+            dict[s[ptr2]] = ptr2
             ptr2 += 1
         return res
 
 
 solution = Solution()
-res = solution.lengthOfLongestSubstring(" ")
+res = solution.lengthOfLongestSubstring("bbtablud")
 print(res)
