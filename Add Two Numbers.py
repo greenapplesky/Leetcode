@@ -32,6 +32,7 @@ class Solution:
             ptr.next = ListNode(1)
         return res.next
 
+
 solution = Solution()
 l10 = ListNode(2)
 l11 = ListNode(4)
