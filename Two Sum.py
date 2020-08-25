@@ -5,12 +5,13 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        dict = {}
+
+        mydict = {}
         for i in range(len(nums)):
-            if(nums[i] in dict):
-                return [dict[nums[i]], i]
+            if nums[i] in mydict:
+                return [mydict[nums[i]], i]
             else:
-                dict[target - nums[i]] = i
+                mydict[target - nums[i]] = i
 
 
 a = Solution()

@@ -12,29 +12,23 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
+
         res = ListNode(0)
         ptr = res
-        flag = 0
-        while(l1 and l2):
-            sum = l1.val + l2.val + flag
-            flag = sum//10
+        carry = 0
+        while l1 or l2:
+            x = l1.val if l1 else 0
+            y = l2.val if l2 else 0
+            sum = x + y + carry
+            carry = sum//10
             ptr.next = ListNode(sum % 10)
-            l1 = l1.next
-            l2 = l2.next
             ptr = ptr.next
-        while(l1):
-            sum = l1.val + flag
-            flag = sum//10
-            ptr.next = ListNode(sum % 10)
-            l1 = l1.next
-            ptr = ptr.next
-        while(l2):
-            sum = l2.val + flag
-            flag = sum//10
-            ptr.next = ListNode(sum % 10)
-            l2 = l2.next
-            ptr = ptr.next
-        if(flag==1):
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+
+        if carry == 1:
             ptr.next = ListNode(1)
         return res.next
 
@@ -50,4 +44,7 @@ l11.next = l12
 l20.next = l21
 l21.next = l22
 res = solution.addTwoNumbers(l10,l20)
-print('111')
+ptr = res
+while ptr:
+    print(ptr.val)
+    ptr = ptr.next
