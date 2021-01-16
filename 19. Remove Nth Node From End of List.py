@@ -20,6 +20,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         res = ListNode(0)
